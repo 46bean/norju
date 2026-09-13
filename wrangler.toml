@@ -1,0 +1,8 @@
+name = "gsmon"
+compatibility_date = "2026-09-10"
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gsmon-db"
+database_id = "9cf69d95-e7f0-4693-b863-ad56cb8a6f21"
