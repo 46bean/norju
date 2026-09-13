@@ -1,7 +1,7 @@
 /* ---------- 기본 ---------- */
 const CHO   = ['ㅎ','ㅍ','ㅌ','ㅋ','ㅊ','ㅈ','ㅇ','ㅅ','ㅂ','ㅁ','ㄹ','ㄷ','ㄴ','ㄱ'];
 const ALPHA = [...'ZYXWVUTSRQPONMLKJIHGFEDCBA'];
-const LETTERS = [...CHO, ...ALPHA, '#'].reverse();   // 내림차순. 오름차순으로 바꾸려면 .reverse() 추가
+const LETTERS = [...CHO, ...ALPHA, '#'].reverse();
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
@@ -126,7 +126,7 @@ async function loadWordList() {
   state.list = (await r.json()).cards || [];
   $('#word-list').innerHTML = state.list.length
     ? state.list.map((c) => `<button class="word-chip" data-id="${c.id}">${esc(c.word)}</button>`).join('')
-    : `<p class="empty-msg">이 글자에는 아직 단어가 없어요. '글쓰기'로 첫 단어를 만들어 보세요.</p>`;
+    : `<p class="empty-msg">아직 연결된 단어가 없어요. '글쓰기'로 첫 단어를 만들어 보세요.</p>`;
 }
 
 $('#word-list').addEventListener('click', (e) => {
