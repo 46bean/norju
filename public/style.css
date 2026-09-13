@@ -4,7 +4,7 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif; }
+  font-family: "IBM Plex Sans", "Pretendard", "Apple SD Gothic Neo", sans-serif; }
 
 .topbar { display: flex; align-items: center; justify-content: space-between;
   gap: 12px; padding: 14px 22px; background: var(--card);
