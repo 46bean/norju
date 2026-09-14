@@ -53,7 +53,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 34px 20px 80px; }
 .scatter { position: relative; width: 100%; }
 .dot { position: absolute; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 2px;
-  border: 1px solid var(--line-strong); border-radius: var(--r-sq);
+  border: 2px solid var(--line-strong); border-radius: var(--r-sq);
   background: var(--card); color: var(--ink);
   font: inherit; font-weight: 700; line-height: 1; cursor: pointer;
   transition: background .15s, color .15s, border-color .15s; }
@@ -73,7 +73,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 34px 20px 80px; }
 /* 초성 버튼: 네모 */
 .idx { display: flex; flex-direction: column; align-items: center; justify-content: center;
   width: 44px; height: 44px; gap: 2px;
-  border: 1px solid var(--line-strong); border-radius: var(--r-sq);
+  border: 2px solid var(--line-strong); border-radius: var(--r-sq);
   background: var(--card); color: var(--ink);
   font: inherit; font-weight: 700; cursor: pointer;
   transition: background .15s, color .15s, border-color .15s; }
