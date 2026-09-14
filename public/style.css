@@ -152,3 +152,14 @@ dialog input[type="file"] { padding: 7px; font-size: 13px; background: #fff; }
 
 
 .name-sub { margin: 12px 0 0; }
+
+
+/* 닉네임 객관식 */
+.nick-choices { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 4px; }
+.nick-opt { flex: 1 1 auto; min-width: 92px; padding: 11px 12px;
+  border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  font: inherit; font-size: 15px; cursor: pointer; transition: background .15s, color .15s; }
+.nick-opt:hover { border-color: #cfc7b6; }
+.nick-opt.on { background: var(--accent); border-color: var(--accent);
+  color: #fff; font-weight: 600; }
+
