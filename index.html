@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>놀아주라.com</title>
+<meta name="description" content="놀주" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <h1 class="logo">ㄴㅇㅈㄹ</h1>
+  <div class="user">
+    <span id="who" class="chip"></span>
+    <button id="btn-toggle" class="btn">전체보기</button>
+    <button id="btn-write" class="btn primary">글쓰기</button>
+    <button id="btn-nick" class="btn ghost">이름 변경</button>
+  </div>
+</header>
+
+<main>
+  <!-- 홈: 흩뿌려진 인덱스 -->
+  <section id="view-scatter">
+    <p class="tagline">글자를 누르면 단어가 무작위로 나옴<span id="total" class="total"></span></p>
+    <div id="scatter" class="scatter"></div>
+  </section>
+
+  <!-- 전체보기 -->
+  <section id="view-list" hidden>
+    <div class="list-head">
+      <h2>전체보기</h2>
+      <button id="btn-home" class="btn ghost">홈으로</button>
+    </div>
+    <nav id="index-grid" class="index-grid" aria-label="인덱스"></nav>
+    <h3 id="list-title" class="list-title">인덱스를 선택하세요</h3>
+    <div id="word-list" class="word-list"></div>
+  </section>
+</main>
+
+<!-- 닉네임 -->
+<dialog id="dlg-nick">
+  <form method="dialog" id="form-nick">
+    <h3>누구세요?</h3>
+    <p class="sub">여기서 고른 이름이 아이디 역할을 합니다.</p>
+
+    <div class="nick-choices" id="nick-choices">
+      <button type="button" class="nick-opt" data-nick="정유진">정유진</button>
+      <button type="button" class="nick-opt" data-nick="안은빈">안은빈</button>
+      <button type="button" class="nick-opt" data-nick="__other">그 외</button>
+    </div>
+
+    <div id="nick-other-wrap" hidden>
+      <p class="sub name-sub">닉네임 직접 입력</p>
+      <input id="nick-input" maxlength="20" placeholder="오드존예" autocomplete="off" />
+    </div>
+
+    <p class="sub name-sub">표시될 작성자 이름 <span class="opt">(선택)</span></p>
+    <input id="name-input" maxlength="30" placeholder="비워두면 닉네임으로 표시됩니다" autocomplete="off" />
+
+    <p id="nick-error" class="err"></p>
+    <div class="row-end"><button class="btn primary" value="ok">시작하기</button></div>
+  </form>
+</dialog>
+
+<!-- 단어 보기 -->
+<dialog id="dlg-view">
+  <div class="v-top">
+    <span id="v-letter" class="v-letter"></span>
+    <span id="v-count" class="v-count"></span>
+    <button id="v-close" class="x-btn" aria-label="닫기">&times;</button>
+  </div>
+
+  <p id="v-empty" class="v-empty" hidden>
+    이 글자에 연결된 단어가 없어요.<br />
+    <button id="v-empty-write" class="btn primary">첫 단어 쓰기</button>
+  </p>
+
+  <div id="v-main">
+    <h3 id="v-word" class="v-word"></h3>
+    <button id="v-reveal" class="btn reveal">등장배경</button>
+
+    <div id="v-body" class="v-body" hidden>
+      <p id="v-meaning" class="v-meaning"></p>
+      <p id="v-nobg" class="v-nobg" hidden>작성된 내용이 없습니다.</p>
+      <img id="v-image" class="v-image" alt="" hidden />
+
+      <div id="v-notes" class="v-notes"></div>
+
+      <div class="note-add">
+        <textarea id="note-input" maxlength="500" rows="2"
+          placeholder="등장배경을 덧붙여 주세요."></textarea>
+        <div class="note-add-foot">
+          <span id="note-error" class="err-inline"></span>
+          <button type="button" id="note-submit" class="btn">배경 추가</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="v-foot">
+      <span id="v-author" class="v-author"></span>
+      <span class="v-right">
+        <span id="v-tools" class="v-tools"></span>
+        <button id="v-next" class="btn">다른 단어</button>
+      </span>
+    </footer>
+  </div>
+</dialog>
+
+<!-- 작성 / 수정 -->
+<dialog id="dlg-card">
+  <form id="form-card">
+    <h3 id="card-form-title">작성</h3>
+    <input type="hidden" id="card-id" />
+
+    <label>단어 <input id="f-word" maxlength="150" required autocomplete="off" /></label>
+
+    <label>작성자 이름 <span class="opt">(선택)</span>
+      <input id="f-name" maxlength="30" placeholder="비워두면 닉네임으로 표시됩니다" autocomplete="off" />
+    </label>
+
+    <label>등장배경 <span class="opt">(선택)</span>
+      <textarea id="f-meaning" maxlength="500" rows="4"
+        placeholder="단어가 등장한 맥락 등을 자유롭게 작성해 주세요."></textarea>
+    </label>
+
+    <div class="field">
+      <span class="field-label">사진 <span class="opt">(선택)</span></span>
+      <input type="file" id="f-image" accept="image/*" />
+      <p id="img-status" class="img-status"></p>
+      <div id="img-preview-wrap" class="img-preview-wrap" hidden>
+        <img id="img-preview" class="img-preview" alt="미리보기" />
+        <button type="button" id="img-clear" class="link danger">사진 제거</button>
+      </div>
+    </div>
+
+    <p id="form-error" class="err"></p>
+    <div class="row-end">
+      <button type="button" class="btn ghost" id="card-cancel">취소</button>
+      <button type="submit" class="btn primary" id="card-submit">저장</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="/app.js"></script>
+</body>
+</html>
