@@ -1,9 +1,3 @@
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
-
-/* 폰트: 영문·숫자 = IBM Plex Sans / 한글 = Noto Sans KR (글리프 폴백 방식)
-   index.html <head>에 Google Fonts <link>가 있어야 적용됩니다. */
 
 :root {
   --bg: #ffffff;
@@ -67,7 +61,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 34px 20px 80px; }
   font-variant-numeric: tabular-nums; }
 .dot:hover { background: var(--ink); border-color: var(--ink); color: #fff; z-index: 2; }
 .dot:hover em { color: #bdbdbd; }
-.dot.empty { border-color: var(--line); color: #c4c4c4; }
+.dot.empty { border-color: #bdbdbd; color: #c4c4c4; }
 .dot.empty em { color: #d4d4d4; }
 .dot.empty:hover { background: var(--card); border-color: var(--ink); color: var(--ink); }
 
@@ -86,7 +80,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 34px 20px 80px; }
 .idx em { font-style: normal; font-size: 10px; font-weight: 400; color: var(--sub);
   font-variant-numeric: tabular-nums; }
 .idx:hover { background: var(--wash); }
-.idx.empty { border-color: var(--line); color: #c4c4c4; }
+.idx.empty { border-color: #bdbdbd; color: #c4c4c4; }
 .idx.empty em { color: #d4d4d4; }
 .idx.on { background: var(--ink); border-color: var(--ink); color: #fff; }
 .idx.on em { color: #bdbdbd; }
