@@ -1,18 +1,31 @@
+# 설치된 폰트 #
+
+.ibm-plex-sans-<uniquifier> {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
 :root {
   --bg: #f6f4ef; --ink: #2c2a26; --sub: #7b7568;
   --line: #e2ddd2; --accent: #b4552d; --card: #fffdf8;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--ink);
   font-family: "IBM Plex Sans", "Pretendard", "Apple SD Gothic Neo", sans-serif; }
 
-.topbar { display: flex; align-items: center; justify-content: space-between;
+.topbar { display: flex; align-items: baseline; justify-content: space-between;
   gap: 12px; padding: 14px 22px; background: var(--card);
   border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
-.logo { margin: 0; font-size: 20px; letter-spacing: .06em; }
+.logo { margin: 0; font-size: 18px; letter-spacing: .06em; }
 .user { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .chip { padding: 5px 12px; border-radius: 999px; background: #efece3;
-  font-size: 13px; color: var(--sub); }
+  font-size: 11px; color: var(--sub); }
 .chip.admin { background: #fbe6dc; color: var(--accent); font-weight: 600; }
 
 .btn { border: 1px solid var(--line); background: var(--card); color: var(--ink);
@@ -59,41 +72,83 @@ main { max-width: 1000px; margin: 0 auto; padding: 26px 18px 70px; }
 
 /* 모달 공통 */
 dialog { border: 1px solid var(--line); border-radius: 16px; padding: 22px;
-  width: min(440px, 92vw); background: var(--card); }
+  width: min(440px, 92vw); max-width: 92vw; max-height: 86vh;
+  background: var(--card);
+  overflow-x: hidden; overflow-y: auto;
+  overflow-wrap: break-word; word-break: break-word; }
 dialog::backdrop { background: rgba(30,26,20,.45); }
-dialog h3 { margin: 0 0 6px; }
+dialog * { max-width: 100%; min-width: 0; }
+dialog h3 { margin: 0 0 6px; overflow-wrap: break-word; }
 dialog .sub { margin: 0 0 14px; font-size: 13px; color: var(--sub); line-height: 1.55; }
-dialog code { background: #efece3; padding: 1px 5px; border-radius: 4px; }
-dialog label { display: block; margin-bottom: 12px; font-size: 13px; color: var(--sub); }
-dialog input, dialog textarea { width: 100%; margin-top: 5px; padding: 9px;
+dialog code { background: #efece3; padding: 1px 5px; border-radius: 4px;
+  overflow-wrap: break-word; }
+dialog label, .field { display: block; margin-bottom: 14px; font-size: 13px; color: var(--sub); }
+.field-label { display: block; margin-bottom: 5px; }
+.opt { font-weight: 400; opacity: .75; }
+dialog input, dialog textarea { display: block; width: 100%; margin-top: 5px; padding: 9px;
   border: 1px solid var(--line); border-radius: 8px; font: inherit;
   background: #fff; resize: vertical; }
-.row-end { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+dialog textarea { white-space: pre-wrap; overflow-wrap: break-word; }
+dialog input[type="file"] { padding: 7px; font-size: 13px; background: #fff; }
+.row-end { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px;
+  flex-wrap: wrap; }
 .err { color: #b3372f; font-size: 13px; min-height: 18px; margin: 0 0 6px; }
+
+/* 사진 첨부 */
+.img-status { margin: 7px 0 0; font-size: 12px; color: var(--sub); }
+.img-preview-wrap { margin-top: 9px; }
+.img-preview { display: block; width: 100%; max-height: 190px;
+  object-fit: contain; border: 1px solid var(--line); border-radius: 10px;
+  background: #fff; }
+.img-preview-wrap .link { margin-top: 6px; }
 
 /* 단어 보기 모달 */
 .v-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.v-letter { width: 30px; height: 30px; border-radius: 50%; background: var(--accent);
-  color: #fff; display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px; }
+.v-letter { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: #fff; display: flex;
+  align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
 .v-count { font-size: 12px; color: var(--sub); }
 .x-btn { margin-left: auto; border: 0; background: none; font-size: 22px;
   line-height: 1; color: var(--sub); cursor: pointer; }
 .v-word { margin: 10px 0 14px; font-size: 30px; text-align: center;
-  word-break: keep-all; }
+  word-break: keep-all; overflow-wrap: break-word; }
 .btn.reveal { display: block; margin: 0 auto 6px; }
 .v-body { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 14px; }
-.v-meaning { margin: 0 0 8px; font-size: 17px; font-weight: 600; white-space: pre-wrap; }
-.v-example { margin: 0; font-size: 14px; color: var(--sub); white-space: pre-wrap; }
+.v-meaning { margin: 0 0 10px; font-size: 16px; line-height: 1.65;
+  white-space: pre-wrap; overflow-wrap: break-word; word-break: break-word; }
+.v-nobg { margin: 0 0 10px; font-size: 14px; color: var(--sub); }
+.v-image { display: block; width: 100%; height: auto; border-radius: 10px;
+  border: 1px solid var(--line); background: #fff; }
 .v-foot { display: flex; align-items: center; justify-content: space-between;
-  gap: 10px; margin-top: 18px; font-size: 12px; color: var(--sub); }
+  gap: 10px; margin-top: 18px; font-size: 12px; color: var(--sub); flex-wrap: wrap; }
 .v-right { display: flex; align-items: center; gap: 8px; }
 .link { border: 0; background: none; color: var(--sub); cursor: pointer;
   font-size: 12px; text-decoration: underline; padding: 0 3px; }
 .link.danger { color: #b3372f; }
 .v-empty { text-align: center; color: var(--sub); line-height: 2.2; margin: 18px 0 6px; }
+.pin { font-size: 10px; color: var(--accent); }
 
 @media (max-width: 520px) {
   .v-word { font-size: 25px; }
   .topbar { padding: 12px 14px; }
+  dialog { padding: 18px; }
 }
+
+
+/* 덧붙인 등장배경 */
+.v-notes { margin-top: 4px; }
+.note { border-top: 1px dashed var(--line); padding: 11px 0 9px; }
+.note-body { margin: 0 0 5px; font-size: 15px; line-height: 1.6;
+  white-space: pre-wrap; overflow-wrap: break-word; }
+.note-foot { display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; font-size: 11px; color: var(--sub); }
+.note-add { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.note-add textarea { display: block; width: 100%; padding: 9px; font: inherit;
+  font-size: 14px; border: 1px solid var(--line); border-radius: 8px;
+  background: #fff; resize: vertical; }
+.note-add-foot { display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; margin-top: 7px; }
+.err-inline { font-size: 12px; color: #b3372f; }
+
+
+.name-sub { margin: 12px 0 0; }
